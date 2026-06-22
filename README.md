@@ -2,11 +2,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/)
-[![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen.svg)]()
-[![Build: Passing](https://img.shields.io/badge/Build-Passing-success.svg)]()
-[![arXiv](https://img.shields.io/badge/arXiv-2606.04182-b31b1b.svg)](https://arxiv.org/)
+[![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen.svg)](https://github.com/aidt-india/aidt-india)
+[![Build: Passing](https://img.shields.io/badge/Build-Passing-success.svg)](https://github.com/aidt-india/aidt-india/actions)
+[![arXiv](https://img.shields.io/badge/arXiv-2406.04182-b31b1b.svg)](https://arxiv.org/abs/2406.04182)
 
-## Building a living, learning replica of India's atmosphere to safeguard a nation of 1.44 billion from climate extremes.
+> **Building a living, learning replica of India's atmosphere to safeguard a nation of 1.44 billion from climate extremes.**
 
 > **TL;DR** — A four-layer, AI-driven digital twin of India's climate that fuses **124 years of IMD rainfall**, **73 years of gridded temperature**, **15-minute INSAT-3D/3DR imagery**, and **ISRO MOSDAC/Bhuvan** products into a 5 km hourly nowcast engine, a 10-day probabilistic forecast, and an interactive "what-if" scenario module — built entirely on sovereign Indian data and open-source ML.
 
@@ -134,14 +134,14 @@ The digital twin is built **entirely on Indian national datasets** plus two inte
 |---|---|---|---|---|---|---|---|
 | 1 | IMD Gridded Rainfall (RF0.25) | Daily precipitation | 0.25° (≈ 27 km) | Daily | 1901-01-01 → present (124 y) | NetCDF | Annual update + daily annexure |
 | 2 | IMD 1° Max/Min Temperature | Tmax, Tmin, mean | 1° (≈ 110 km) | Daily | 1951-01-01 → present (73 y) | NetCDF | Monthly |
-| 3 | INSAT-3D / 3DR Imager & Sounder | BT, WV, OLR, SST | 1 km – 8 km | 15 min | 2014 → present (geostationary) | HDF5 / L1B | 15 min |
+| 3 | INSAT-3D / 3DR Imager & Sounder | BT, WV, OLR, SST | 1 km – 8 km | 15 min | 2013 → present (geostationary) | HDF5 / L1B | 15 min |
 | 4 | ISRO MOSDAC | INSAT, SARAL, SCATSAT, Megha-Tropiques | 0.05°–1° | 6 h – daily | 2011 → present | NetCDF / HDF5 | 6 h |
 | 5 | ISRO Bhuvan (NRSC) | LULC, AWiFS, Cartosat, GLOF | 5 m – 56 m | Annual | 1972 → present | GeoTIFF / WMS | Annual |
 | 6 | ECMWF ERA5 | 240+ vars (reanalysis) | 0.25° | Hourly | 1940 → present (5 d lag) | GRIB / NetCDF | Daily |
 | 7 | NCMRWF IMDAA | Regional reanalysis | 0.12° (~ 12 km) | 3-h / 6-h | 1979 → 2020 | GRIB | Static release |
 | 8 | IMD / State AWS & ARG | Station obs, AWS | Point + gridded | 15 min – hourly | 2008 → present | CSV / NetCDF | 15 min |
 | 9 | CPC-BLENDED (NOAA) | OLR, CMORPH, GPM fallback | 0.05° – 1° | 30 min – daily | 1995 → present | NetCDF | Daily |
-| 10 | CWC / CWC Reservoir | Reservoir level, flood advisory | District | Daily | 2015 → present | CSV / API | 6 h |
+| 10 | CWC Reservoir Data | Reservoir level, flood advisory | District | Daily | 2015 → present | CSV / API | 6 h |
 
 **Why these ten?** IMD gives us the long, stable climate memory; INSAT-3D/3DR gives the high-frequency convective update; MOSDAC/Bhuvan extend coverage to ocean, cryosphere, and LULC; ERA5 and IMDAA provide physically consistent boundary conditions; AWS/ARG ground-truth our nowcast; CPC fills gaps over the Arabian Sea; CWC closes the human-impact loop. Each row maps to at least one ML feature and at least one stakeholder deliverable.
 
