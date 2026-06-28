@@ -57,6 +57,20 @@ Raw observational data from stations and satellites exhibits discrepancies in pr
   └────────────────────────────────────────────────────┘
 ```
 
+### Preprocessing and Spatial Fusion Pipeline
+```mermaid
+graph TD
+    RawSat["Raw Satellite (HDF5/INSAT-3D)"] --> Reproj["Pyresample Reprojection"]
+    RawIMD["Raw Ground Obs (ASCII/NetCDF)"] --> QAQC["QA/QC (Range & Outlier checks)"]
+    RawGauges["AWS/ARG Station CSVs"] --> QAQC
+
+    Reproj --> Grid["Bilinear & Conservative Remap (Dask)"]
+    QAQC --> Grid
+
+    Grid --> Harmonized["Harmonized hourly 0.05° Zarr Datacube"]
+    Harmonized --> DA["UNetKF Data Assimilation"]
+```
+
 ### 2.1 Quality Control (QC) Protocols
 - **Range Verification:** Sensor values are checked against absolute physical limits (e.g., negative rainfall is zeroed; relative humidity must lie in $[0, 100]\%$; surface temperature must remain within $[-10, 60]^\circ\text{C}$).
 - **Temporal Consistency:** Sudden jumps in hourly sensor readings (e.g., temperature changes $>15^\circ\text{C}$ in 1 hour) are flagged as sensor anomalies and imputed using temporal interpolation.
@@ -76,6 +90,21 @@ To produce a continuous "best estimate" (analysis state) of the atmosphere, we i
   - **3DVar / 4D-Var:** Formulates data assimilation as a variational optimization problem.
   - **Machine Learning Data Assimilation (ML-DA):** A convolutional U-Net surrogate model (**UNetKF**) is trained to emulate Kalman filter updates. This bypasses the expensive matrix inversions of EnKF, delivering a 100× speedup in generating initial analysis states.
   - **FuXi-DA / learned DA:** End-to-end differentiable data assimilation that enforces physical boundary conditions using neural operators.
+
+### UNetKF Hybrid Data Assimilation Loop
+```mermaid
+graph TD
+    PriorState["Prior State Model Forecast (x_f)"] --> UNetKF["UNetKF Neural Operator"]
+    ObsData["Observations (y)"] --> UNetKF
+    ObsOperator["Observation Operator (H)"] --> UNetKF
+
+    UNetKF --> ComputeGain["Compute Kalman Gain (K_k) without Matrix Inversion"]
+    ComputeGain --> AnalyzeState["Analysis State (x_a) = x_f + K_k * (y - H*x_f)"]
+
+    AnalyzeState --> PhysicsLoss["Evaluate Navier-Stokes Physics Loss"]
+    PhysicsLoss --> RetrainUNet["Optimize UNet Weights (Offline)"]
+    AnalyzeState --> NextCycle["Next Ensemble Simulation Step (Surrogate Rollout)"]
+```
 
 ---
 

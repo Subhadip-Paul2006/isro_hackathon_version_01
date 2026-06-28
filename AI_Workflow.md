@@ -104,6 +104,38 @@ STAGE 5: HUMAN REVIEW and PUBLICATION
     - External: Open data portal, research preprint, policy brief
 ```
 
+### Deep Research Agent Workflow Flowchart
+```mermaid
+flowchart TD
+    Start([User Query]) --> Triage{Triage Agent}
+    Triage -->|Ambiguous| Clarifier[Clarifier Agent]
+    Clarifier -->|User Input| Triage
+    Triage -->|Enriched Query| Planner[Planner Agent]
+    Planner -->|Generate DAG| ApproveDAG{HITL: Approve DAG?}
+    ApproveDAG -->|No| Planner
+    ApproveDAG -->|Yes| Master[Master Agent]
+    Master -->|Spawn in Parallel| R1[Researcher Agent 1]
+    Master -->|Spawn in Parallel| R2[Researcher Agent 2]
+    Master -->|Spawn in Parallel| Rn[Researcher Agent N]
+
+    R1 --> Search1[Web & ISRO APIs]
+    R2 --> Search2[Scholar & Neo4j]
+    Rn --> Searchn[Internal DBs]
+
+    Search1 --> Reduce[Reduce: Consolidate Findings]
+    Search2 --> Reduce
+    Searchn --> Reduce
+
+    Reduce --> Refiner{Refiner Agent}
+    Refiner -->|Coverage < 85% & Iterations < 5| Planner
+    Refiner -->|Coverage >= 85% or Max Iterations| Writer[Writer Agent]
+
+    Writer --> WriteDraft[Generate Thematic Sections]
+    WriteDraft --> Review{HITL Review & Fact Check}
+    Review -->|Revisions Needed| Writer
+    Review -->|Approved| Publish([Publish Report / Advisory])
+```
+
 ### 2.3 State Management
 
 The entire workflow is managed through a **SharedLangGraphState** with the following structure:
@@ -1375,6 +1407,49 @@ class ExtremeEventResponse:
                 self.log_event_response(event, severity, response)
 
             time.sleep(60)  # Check every minute during active season
+
+### Multi-Layer Event Modeling Flow
+```mermaid
+graph TD
+    subgraph L1_Events["Layer 1: Ingestion Layer Events"]
+        E11["Raw Sensor Data Published (AWS/ARG)"]
+        E12["INSAT-3D L1B Data Received"]
+        E13["Bhuvan LULC Raster Updated"]
+    end
+
+    subgraph L2_Events["Layer 2: Processing & Assimilation Layer Events"]
+        E21["Data Quality Flagged (Pass/Fail)"]
+        E22["Grid Harmonized (0.05° Regridded)"]
+        E23["UNetKF State Assimilation Triggered"]
+    end
+
+    subgraph L3_Events["Layer 3: AI Twin Engine Events"]
+        E31["Ensemble Forecast Run (50 Members)"]
+        E32["Extreme Event Detected (e.g., Rain > 100mm)"]
+        E33["What-If Counterfactual Run Request"]
+    end
+
+    subgraph L4_Events["Layer 4: Decision & Vis Layer Events"]
+        E41["FastAPI WSS Alert Broadcasted"]
+        E42["Emergency PMO Situation Report (SitRep) Sent"]
+        E43["Bilingual Mobile Push Advisories Dispatched"]
+    end
+
+    E11 --> E21
+    E12 --> E21
+    E13 --> E22
+
+    E21 -->|Pass| E22
+    E22 --> E23
+    E23 --> E31
+
+    E31 --> E32
+    E33 --> E31
+
+    E32 -->|Severe/Catastrophic| E42
+    E32 -->|Moderate/Minor| E43
+    E31 --> E41
+```
 
     def activate_level_1_response(self, event: ExtremeEvent):
         # Immediate actions (within 5 minutes)

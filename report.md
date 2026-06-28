@@ -39,6 +39,35 @@
 └──────────────────────────────────────────────┘
 ```
 
+### Coupled Physical System Model Interaction Diagram
+```mermaid
+graph TD
+    subgraph Atmosphere
+        AirT["Air Temp (INSAT-3D)"]
+        Precip["Precipitation (QPE HEM)"]
+        Wind["Wind Fields (SCATSAT-1)"]
+    end
+    subgraph Hydrosphere
+        Runoff["Surface Runoff"]
+        River["River Discharge (Ganges Basin)"]
+        Reservoir["Reservoir Storage (CWC)"]
+    end
+    subgraph Lithosphere
+        SoilM["Soil Moisture (NICES)"]
+        LULC["Albedo & Roughness (Bhuvan LULC)"]
+        Evapo["Evapotranspiration (Noah-MP)"]
+    end
+
+    Precip -->|Infiltration| SoilM
+    AirT -->|Energy Balance| Evapo
+    Evapo -->|Latent Heat Flux| AirT
+    Precip -->|Runoff Generation| Runoff
+    Runoff -->|Channel Routing| River
+    River -->|Inflow| Reservoir
+    SoilM -->|Transpiration| Evapo
+    LULC -->|Sensible Heat Flux| AirT
+```
+
 ---
 
 ## 2. Global Landscape — Climate Digital Twins
@@ -132,6 +161,16 @@
 | Kolkata | 1.80 | 128 | 5 days |
 
 - **XAI tools used:** Permutation importance, Grad-CAM, temporal occlusion, counterfactuals
+
+### ConvLSTM vs IMD WRF Baseline Performance Chart
+```mermaid
+xychart-beta
+    title "ConvLSTM vs IMD WRF Benchmark (RMSE mm/day)"
+    x-axis [Bengaluru, Delhi, Mumbai, Kolkata]
+    y-axis "RMSE (Lower is Better)" 0 --> 3
+    bar [0.21, 0.48, 0.52, 1.80]
+    line [1.12, 1.95, 2.10, 2.85]
+```
 
 **Alternative architectures tested on India:**
 - Seq2Seq + Attention — superior for monsoon break/active detection
@@ -250,6 +289,29 @@
 │ • What-If Scenario Engine                                │
 │ • AutoML + Retraining Pipeline                           │
 └──────────────────────────────────────────────────────────┘
+```
+
+### Deep Research Agent Cognitive Processing Mindmap
+```mermaid
+mindmap
+    root((Deep Research Agent))
+        Planning
+            Query Expansion
+            Exploratory Search
+            DAG Generation
+        Researching
+            Web Crawler
+            MOSDAC API fetcher
+            Bhuvan GIS loader
+            Cross-Encoder Rerank
+        Writing
+            Bilingual translation
+            LaTeX/PDF compiler
+            Citation extraction
+            Fact checking
+        Approval
+            HITL gates
+            Budget control
 ```
 
 ### 5.4 Layer 4: Visualization & Decision Support
