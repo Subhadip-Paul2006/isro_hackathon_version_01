@@ -1,11 +1,14 @@
 # Technical Requirements Document (TRD)
 # Indian Climate Digital Twin (ICDT) — Deep Research Platform
+## Prepared for the Bharatiya Antariksh Hackathon (BAH) 2026 — Challenge 05
 
-**Version:** 2.0  
-**Date:** 2026-06-21  
-**Status:** Draft  
-**Technical Lead:** Principal Architect, National Climate Computing Centre (NCCC)  
-**Reviewers:** HPC Team, AI/ML Team, Data Engineering, Security, DevOps
+**Version:** 3.0  
+**Date:** 2026-06-28  
+**Status:** Hackathon Architecture Specification  
+**Team Name:** Team AIDT-India  
+**Sponsor:** Indian Space Research Organisation (ISRO) & Hack2skill  
+**Target Event:** Bharatiya Antariksh Hackathon (BAH) 2026  
+**Problem Statement:** Challenge 05 — AI-Powered Digital Twin of India's Climate
 
 ---
 

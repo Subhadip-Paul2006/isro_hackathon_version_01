@@ -1,6 +1,12 @@
 # Deep Research Report: AI-Powered Digital Twin of India's Climate
+## Flagship Submission for the Bharatiya Antariksh Hackathon (BAH) 2026 — Challenge 05
 
-> **At-a-Glance:** A condensed, structured version of the 400+ paragraph research report on building an indigenous AI-powered Digital Twin for India's climate using IMD + ISRO datasets. All key findings, metrics, and recommendations retained — organized for rapid scanning.
+**Version:** 3.0  
+**Date:** 2026-06-28  
+**Status:** Hackathon Research Output  
+**Team Name:** Team AIDT-India  
+**Sponsor:** Indian Space Research Organisation (ISRO) & Hack2skill  
+**Problem Statement:** Challenge 05 — AI-Powered Digital Twin of India's Climate
 
 ---
 

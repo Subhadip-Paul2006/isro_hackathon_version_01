@@ -1,26 +1,39 @@
 # AI Workflow Document (AI_Workflow.md)
 # Indian Climate Digital Twin (ICDT) - Deep Research Platform
+## Aligned with the Bharatiya Antariksh Hackathon (BAH) 2026 — Challenge 05
 
-**Version:** 2.0
-**Date:** 2026-06-21
-**Status:** Draft
-**AI Lead:** Chief AI Scientist, National Climate Computing Centre (NCCC)
-**Reviewers:** NLP Team, MLOps, Ethics Board, Domain Scientists (IMD, IITM, IITD)
+**Version:** 3.0
+**Date:** 2026-06-28
+**Status:** Pitch Proposal / Draft
+**Team Context:** Student Innovators (Undergraduate/Postgraduate/PhD Research Scholars)
+**Hackathon Event:** Bharatiya Antariksh Hackathon (BAH) 2026 (ISRO & Hack2skill)
+**Challenge Statement:** Challenge 05 — AI-Powered Digital Twin of India's Climate
+**Submission Stage:** Concept Proposal / Idea Submission (Deadline: July 1, 2026)
+**Grand Finale Timeline:** August 6–7, 2026 (30-hour offline hackathon with ISRO scientist mentorship)
 
 ---
 
 ## 1. AI Workflow Philosophy
 
-The ICDT AI Workflow is designed around the principle of **"Human-AI Symbiosis for Climate Intelligence."** Rather than replacing human expertise, the AI system amplifies the capabilities of climate scientists, policymakers, and farmers by automating data-intensive tasks while preserving human judgment for critical decisions.
+The ICDT AI Workflow is designed around the principle of **"Human-AI Symbiosis for Climate Intelligence."** Rather than replacing human expertise, the AI system amplifies the capabilities of climate scientists, policymakers, and farmers by automating data-intensive tasks while preserving human judgment for critical decisions. 
 
-### 1.1 Design Principles
+In the context of the **Bharatiya Antariksh Hackathon 2026 (BAH2026)**, the workflow is engineered to ingest sovereign ISRO and IMD observations and run fast, resource-optimized simulations of Indian climate variability, agricultural forecasting, and urban resilience.
 
+### 1.1 Challenge Objectives & Focus Areas
+Under the BAH2026 guidelines, our solution focuses on four key climate-tech pillars:
+1. **Multi-Source Data Integration:** Fusing ISRO satellite datasets (INSAT-3D/3DR Imager and Sounder profiles, Oceansat-3, SCATSAT-1, Cartosat/Resourcesat/RISAT-1A), NICES Essential Climate Variables (ECVs), Bhuvan geospatial/hazard layers, and IMD historical grids (124-year rainfall, 73-year temperature).
+2. **"What-If" Counterfactual Simulation:** Interactive prediction of climate changes under various temperature fluctuations, rainfall variability, greenhouse gas (CO2) concentrations, and Land Use/Land Cover (LULC) changes.
+3. **Sectoral Impact Mapping:** Actionable intelligence for agriculture (irrigation, crop yield, pest risk), hydrology (river basin streamflow, reservoir levels), and urban resilience (flood hazards, heatwaves).
+4. **Explainability & Performance:** High-throughput inference suitable for edge deployment at Krishi Vigyan Kendras (KVKs) and municipal command centers, with complete transparency via SHAP, Grad-CAM, and physical consistency audits.
+
+### 1.2 Design Principles
 1. **Explainability First:** Every AI prediction must be accompanied by a human-readable explanation, confidence score, and uncertainty quantification
 2. **Physics-Grounded:** ML models must respect physical laws (conservation of mass, energy, momentum); violations trigger automatic model retraining
 3. **Continuous Learning:** The system learns from new observations, user feedback, and research publications in real-time
 4. **Multi-Agent Collaboration:** No single model makes decisions; consensus across physics, data-driven, and expert models is required
 5. **Ethical AI:** Fairness across regions, income levels, and languages; no harm to vulnerable populations
 6. **Open Science:** Research artifacts, model weights, and training data are open by default (with privacy safeguards)
+7. **Sovereign & Cost-Aware Design:** 100% reliance on national data services (Bhuvan, MOSDAC, IMDLIB) and low-carbon, GPU-optimized pipelines (using `codecarbon` instrumentation) to meet rigorous government and technical evaluations.
 
 ---
 

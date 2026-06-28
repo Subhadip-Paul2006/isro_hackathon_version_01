@@ -1,19 +1,22 @@
 # Product Requirements Document (PRD)
 # Indian Climate Digital Twin (ICDT) — Deep Research Platform
+## Prepared for the Bharatiya Antariksh Hackathon (BAH) 2026 — Challenge 05
 
-**Version:** 2.0  
-**Date:** 2026-06-21  
-**Status:** Draft  
-**Product Owner:** National Climate Mission, Ministry of Earth Sciences (MoES)  
-**Stakeholders:** IMD, NCMRWF, ISRO, IITM Pune, IIT Delhi, INCOIS, CWC, NDMA, State Disaster Management Authorities
+**Version:** 3.0  
+**Date:** 2026-06-28  
+**Status:** Hackathon Proposal  
+**Team Name:** Team AIDT-India  
+**Sponsor:** Indian Space Research Organisation (ISRO) & Hack2skill  
+**Target Event:** Bharatiya Antariksh Hackathon (BAH) 2026  
+**Problem Statement:** Challenge 05 — AI-Powered Digital Twin of India's Climate
 
 ---
 
 ## 1. Executive Summary
 
-The **Indian Climate Digital Twin (ICDT)** is a national-scale, AI-powered deep research platform that creates a real-time virtual replica of India's climate, weather, hydrological, and agricultural systems. Built on a multi-agent deep research architecture, ICDT integrates satellite remote sensing (ISRO), in-situ sensor networks (IMD), oceanographic data (INCOIS), and hydrological monitoring (CWC) into a unified digital framework capable of sub-kilometer resolution climate simulation, predictive scenario testing, and policy-grade decision support.
+The **Indian Climate Digital Twin (ICDT)** is a national-scale, AI-powered deep research platform that creates a real-time virtual replica of India's climate, weather, hydrological, and agricultural systems. Originally conceived as a flagship submission for **Challenge 05 ("AI-Powered Digital Twin of India's Climate") of the Bharatiya Antariksh Hackathon (BAH) 2026**, ICDT integrates satellite remote sensing (ISRO MOSDAC), in-situ sensor networks (IMD), oceanographic data (INCOIS), and hydrological monitoring (CWC) into a unified digital framework. It is capable of high-resolution climate simulation, predictive scenario testing, and policy-grade decision support.
 
-The platform addresses India's escalating climate vulnerability — monsoon variability, cyclone intensification, groundwater depletion, agricultural stress, and urban flooding — by enabling stakeholders to simulate "what-if" scenarios, test adaptation strategies, and generate actionable intelligence without real-world risk. The project is funded under the National Mission for Clean Ganga (NMCG) and aligned with India's National Digital Twin Policy and Smart Cities Mission.
+The platform addresses India's escalating climate vulnerability — monsoon variability, cyclone intensification, groundwater depletion, agricultural stress, and urban flooding — by enabling stakeholders to simulate "what-if" scenarios (e.g., changes in LULC, temperature, rainfall, and CO2 concentrations), test adaptation strategies, and generate actionable intelligence without real-world risk. The project is aligned with ISRO's space-tech crowdsourcing mission, India's National Digital Twin Policy, and the Smart Cities Mission.
 
 ---
 
